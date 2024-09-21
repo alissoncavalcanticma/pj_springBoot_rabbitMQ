@@ -20,8 +20,6 @@ Projeto de microserviços com Spring Boot RabbitMQ e AWS
 #### Definindo env:
 
 ```yaml
-
-version: '3'
 services:
   ## PostgreSQL
   postgreSQL:
@@ -52,10 +50,12 @@ services:
     networks:
       - postgres-network
 ## Network
-networks: 
+networks:
   postgres-network:
     driver: bridge
 ```
 #### Levantando env com docker compose:
 
-`` docker-compose -f postgreSQL_env.yml up -d``
+``docker-compose -f postgreSQL_env.yml -p postgresql_env up -d``
+
+*PGAdmin via browser apresenta problemas e conexão, opção de client windows foi utilizada*

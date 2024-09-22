@@ -2,7 +2,6 @@ package com.ctfera.java_spb.controller;
 
 import com.ctfera.java_spb.dto.PropostaRequestDTO;
 import com.ctfera.java_spb.dto.PropostaResponseDTO;
-import com.ctfera.java_spb.entity.Proposta;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

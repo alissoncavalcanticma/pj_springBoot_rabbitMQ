@@ -7,6 +7,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 
 // Após criação da estrutura básica, foi usado o complie do mavem para criar a implementação do PropostaMapper
 @Mapper
@@ -34,4 +36,9 @@ public interface PropostaMapper {
     @Mapping(target = "cpf", source = "usuario.cpf")
     @Mapping(target = "renda", source = "usuario.renda")
     PropostaResponseDTO convertEntityToDto(Proposta proposta);
+
+
+    List<PropostaResponseDTO> convertListEntityToListDto(Iterable<Proposta> propostas);
+
+
 }

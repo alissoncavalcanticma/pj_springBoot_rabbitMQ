@@ -23,7 +23,6 @@ public class PropostaService {
     }
 
     public List<PropostaResponseDTO> obterProposta() {
-        propostaRepository.findAll();
-        return null;
+        return PropostaMapper.INSTANCE.convertListEntityToListDto( propostaRepository.findAll() );
     }
 }

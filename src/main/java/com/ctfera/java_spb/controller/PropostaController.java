@@ -33,6 +33,6 @@ public class PropostaController {
 
     @GetMapping()
     public ResponseEntity<List<PropostaResponseDTO>> obterProposta(){
-        propostaService.obterProposta();
+       return ResponseEntity.ok().body(propostaService.obterProposta());
     }
 }

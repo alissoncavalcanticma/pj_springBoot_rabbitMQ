@@ -27,6 +27,7 @@ public interface PropostaMapper {
     @Mapping(target = "observacao", ignore=true) //ignorar mapeamento não presente no DTO
     Proposta convertDtoToProposta(PropostaRequestDTO propostaRequestDTO);
 
+    @Mapping(target = "id", source = "id")
     @Mapping(target = "nome", source = "usuario.nome")
     @Mapping(target = "sobrenome", source = "usuario.sobrenome")
     @Mapping(target = "telefone", source = "usuario.telefone")

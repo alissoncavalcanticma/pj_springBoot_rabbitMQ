@@ -1,6 +1,5 @@
 package com.ctfera.java_spb.dto;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

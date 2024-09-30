@@ -1,13 +1,6 @@
 package com.ctfera.java_spb.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,7 +25,8 @@ public class Proposta {
     private boolean integrada;  //tipo primitivo
     private String observacao;
 
-    @OneToOne //Relacionamento 1x1 com Usuario
+
+    @OneToOne(cascade = CascadeType.PERSIST) //Relacionamento 1x1 com Usuario // (cascade = CascadeType.PERSIST) faz o usuário relacionado à proposta, caso não exista, ser salvo no banco antes da proposta
     @JoinColumn(name = "id_usuario") //Mapeando id_usuario como chave estrangeira de Usuario
     private Usuario usuario;
 

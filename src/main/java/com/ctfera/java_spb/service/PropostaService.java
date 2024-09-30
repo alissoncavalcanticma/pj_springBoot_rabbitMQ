@@ -8,6 +8,8 @@ import com.ctfera.java_spb.repository.PropostaRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @AllArgsConstructor
 @Service //Anotação de camada service para definir a responsabilidade de gerência do Spring
 public class PropostaService {
@@ -18,5 +20,9 @@ public class PropostaService {
         Proposta proposta =  PropostaMapper.INSTANCE.convertDtoToProposta(requestDTO);
         propostaRepository.save(proposta);
         return PropostaMapper.INSTANCE.convertEntityToDto(proposta);
+    }
+
+    public List<PropostaResponseDTO> obterProposta() {
+        return PropostaMapper.INSTANCE.convertListEntityToListDto( propostaRepository.findAll() );
     }
 }

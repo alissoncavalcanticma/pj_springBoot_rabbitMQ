@@ -7,6 +7,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 
 // Após criação da estrutura básica, foi usado o complie do mavem para criar a implementação do PropostaMapper
 @Mapper
@@ -27,10 +29,16 @@ public interface PropostaMapper {
     @Mapping(target = "observacao", ignore=true) //ignorar mapeamento não presente no DTO
     Proposta convertDtoToProposta(PropostaRequestDTO propostaRequestDTO);
 
+    @Mapping(target = "id", source = "id")
     @Mapping(target = "nome", source = "usuario.nome")
     @Mapping(target = "sobrenome", source = "usuario.sobrenome")
     @Mapping(target = "telefone", source = "usuario.telefone")
     @Mapping(target = "cpf", source = "usuario.cpf")
     @Mapping(target = "renda", source = "usuario.renda")
     PropostaResponseDTO convertEntityToDto(Proposta proposta);
+
+
+    List<PropostaResponseDTO> convertListEntityToListDto(Iterable<Proposta> propostas);
+
+
 }

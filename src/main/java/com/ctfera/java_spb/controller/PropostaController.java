@@ -11,7 +11,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.util.List;
 
-@AllArgsConstructor //Anotação Lombok para criar construtor em tempo de execução, substitue o @Autowired
+@AllArgsConstructor //Anotação Lombok para criar construtor em tempo de execução, substitue o @Autowired para definir o uso da instância gerenciada pelo Spring
 @RestController
 @RequestMapping("/proposta")
 public class PropostaController {

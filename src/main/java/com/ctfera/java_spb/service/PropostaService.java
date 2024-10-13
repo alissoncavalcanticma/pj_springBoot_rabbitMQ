@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@AllArgsConstructor
+@AllArgsConstructor //Anotação Spring que usa o Lombok para fazer a injeção de dependências.
 @Service //Anotação de camada service para definir a responsabilidade de gerência do Spring
 public class PropostaService {
 

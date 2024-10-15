@@ -7,6 +7,7 @@ import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Bean;
@@ -15,6 +16,11 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitMQConfiguration {
+
+
+        //Intanciando Exchange e passado valor de property
+        @Value("${spring.rabbitmq.propostapendente.exchange}")
+        private String exchange;
 
         //Criação das filas
         //Filas foram criadas nesse microserviço, mas deveriam ser criadas de acordo com a responsabilidade de cada microserviço.
@@ -77,7 +83,7 @@ public class RabbitMQConfiguration {
 
         @Bean
         public FanoutExchange criarFanoutExchangePropostaPendente(){
-            return ExchangeBuilder.fanoutExchange("proposta-pendente.ex").build();
+            return ExchangeBuilder.fanoutExchange(exchange).build();
         }
 
         //Setando o binds da Exchange "proposta-pendente"
@@ -117,7 +123,5 @@ public class RabbitMQConfiguration {
 
             return rabbitTemplate;
         }
-
-
 
 }

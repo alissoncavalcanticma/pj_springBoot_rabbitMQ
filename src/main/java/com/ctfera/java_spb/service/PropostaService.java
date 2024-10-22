@@ -24,7 +24,7 @@ public class PropostaService {
 
     public PropostaService(PropostaRepository propostaRepository,
                            NotificacaoService notificacaoService,
-                           @Value("${spring.rabbitmq.propostapendente.exchang}")String exchange) {
+                           @Value("${spring.rabbitmq.propostapendente.exchange}")String exchange) {
 
         this.propostaRepository = propostaRepository;
         this.notificacaoService = notificacaoService;

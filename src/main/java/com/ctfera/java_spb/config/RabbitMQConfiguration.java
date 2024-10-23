@@ -18,7 +18,7 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitMQConfiguration {
 
 
-        //Intanciando Exchange e passado valor de property
+        //Instanciando Exchange e passado valor de property
         @Value("${spring.rabbitmq.propostapendente.exchange}")
         private String exchange;
 
@@ -55,7 +55,7 @@ public class RabbitMQConfiguration {
         public RabbitMQConfiguration(ConnectionFactory connectionFactory){
             this.connectionFactory = connectionFactory;
         }
-         */
+        */
 
 
         // -------- Setando instâncias de configuração --------- //

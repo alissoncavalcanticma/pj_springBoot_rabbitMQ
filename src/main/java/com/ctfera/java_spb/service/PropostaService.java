@@ -24,7 +24,7 @@ public class PropostaService {
 
     public PropostaService(PropostaRepository propostaRepository,
                            NotificacaoService notificacaoService,
-                           @Value("${spring.rabbitmq.propostapendente.exchang}")String exchange) {
+                           @Value("${spring.rabbitmq.propostapendente.exchange}")String exchange) {
 
         this.propostaRepository = propostaRepository;
         this.notificacaoService = notificacaoService;
@@ -36,12 +36,25 @@ public class PropostaService {
         Proposta proposta =  PropostaMapper.INSTANCE.convertDtoToProposta(requestDTO);
         propostaRepository.save(proposta);
 
-        PropostaResponseDTO response = PropostaMapper.INSTANCE.convertEntityToDto(proposta);
+        // PropostaResponseDTO response = PropostaMapper.INSTANCE.convertEntityToDto(proposta);
+        // notificacaoService.notificar(response, exchange);
 
-        notificacaoService.notificar(response, exchange);
+        notificarRabbitMQ(proposta);
 
-        return response;
+        return PropostaMapper.INSTANCE.convertEntityToDto(proposta);
     }
+
+    //Método de notificação com tratamento para casos de falha, onde salva false para integração concluída
+    private void notificarRabbitMQ(Proposta proposta){
+       try{
+            notificacaoService.notificar(proposta, exchange);
+       }catch(RuntimeException ex){
+           proposta.setIntegrada(false);
+           propostaRepository.save(proposta);
+       }
+    }
+
+
 
     public List<PropostaResponseDTO> obterProposta() {
         return PropostaMapper.INSTANCE.convertListEntityToListDto( propostaRepository.findAll() );

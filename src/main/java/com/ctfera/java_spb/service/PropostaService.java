@@ -36,12 +36,18 @@ public class PropostaService {
         Proposta proposta =  PropostaMapper.INSTANCE.convertDtoToProposta(requestDTO);
         propostaRepository.save(proposta);
 
-        PropostaResponseDTO response = PropostaMapper.INSTANCE.convertEntityToDto(proposta);
+        // PropostaResponseDTO response = PropostaMapper.INSTANCE.convertEntityToDto(proposta);
+        // notificacaoService.notificar(response, exchange);
 
-        notificacaoService.notificar(response, exchange);
+        notificarRabbitMQ(proposta);
 
-        return response;
+        return PropostaMapper.INSTANCE.convertEntityToDto(proposta);
     }
+
+    private void notificarRabbitMQ(Proposta proposta){
+        notificacaoService.notificar(proposta, exchange);
+    }
+
 
     public List<PropostaResponseDTO> obterProposta() {
         return PropostaMapper.INSTANCE.convertListEntityToListDto( propostaRepository.findAll() );

@@ -44,9 +44,16 @@ public class PropostaService {
         return PropostaMapper.INSTANCE.convertEntityToDto(proposta);
     }
 
+    //Método de notificação com tratamento para casos de falha, onde salva false para integração concluída
     private void notificarRabbitMQ(Proposta proposta){
-        notificacaoService.notificar(proposta, exchange);
+       try{
+            notificacaoService.notificar(proposta, exchange);
+       }catch(RuntimeException ex){
+           proposta.setIntegrada(false);
+           propostaRepository.save(proposta);
+       }
     }
+
 
 
     public List<PropostaResponseDTO> obterProposta() {

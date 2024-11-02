@@ -5,7 +5,6 @@ import com.ctfera.java_spb.dto.PropostaResponseDTO;
 import com.ctfera.java_spb.entity.Proposta;
 import com.ctfera.java_spb.mapper.PropostaMapper;
 import com.ctfera.java_spb.repository.PropostaRepository;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -17,17 +16,17 @@ public class PropostaService {
 
     private PropostaRepository propostaRepository;
 
-    private NotificacaoService notificacaoService;
+    private NotificacaoRabbitService notificacaoRabbitService;
 
     //Por causa de ser um valor de propriedade, não será usado um Bean, mas sim o construtor.
     private String exchange;
 
     public PropostaService(PropostaRepository propostaRepository,
-                           NotificacaoService notificacaoService,
+                           NotificacaoRabbitService notificacaoRabbitService,
                            @Value("${spring.rabbitmq.propostapendente.exchange}")String exchange) {
 
         this.propostaRepository = propostaRepository;
-        this.notificacaoService = notificacaoService;
+        this.notificacaoRabbitService = notificacaoRabbitService;
         this.exchange = exchange;
 
     }
@@ -47,7 +46,7 @@ public class PropostaService {
     //Método de notificação com tratamento para casos de falha, onde salva false para integração concluída
     private void notificarRabbitMQ(Proposta proposta){
        try{
-            notificacaoService.notificar(proposta, exchange);
+            notificacaoRabbitService.notificar(proposta, exchange);
        }catch(RuntimeException ex){
            proposta.setIntegrada(false);
            propostaRepository.save(proposta);

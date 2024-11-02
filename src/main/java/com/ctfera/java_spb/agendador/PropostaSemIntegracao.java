@@ -31,15 +31,17 @@ public class PropostaSemIntegracao {
         this.exchange = exchange;
     }
 
-    //Annotation para Bean de agendamento com parâmetros de fraquência de execução
+    //Annotation para Bean de agendamento com parâmetros de frequência de execução
     //Annotation @EnableScheduling deve ser acrescentado ao método main
     @Scheduled(fixedDelay = 10, timeUnit = TimeUnit.SECONDS)
     public void buscarPropostasSemIntegracao(){
+        logger.info("Execução de JOB realizada."); //Gerar Log de execução do Job
         propostaRepository.findAllByIntegradaIsFalse().forEach(proposta -> {
            try{
                notificacaoRabbitService.notificar(proposta, exchange);
 
                atualizarProposta(proposta);
+               logger.info("Proposta pendente integrada na execução de JOB"); //Gerar Log de execução do Job
            }catch(RuntimeException ex){
                 logger.error(ex.getMessage());
            }

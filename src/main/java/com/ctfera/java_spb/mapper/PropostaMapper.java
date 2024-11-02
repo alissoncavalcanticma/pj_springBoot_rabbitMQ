@@ -26,7 +26,7 @@ public interface PropostaMapper {
     @Mapping(target = "usuario.renda", source = "renda") //Mapeando campo final <- origemDTO
     @Mapping(target = "id", ignore=true) //ignorar mapeamento não presente no DTO
     @Mapping(target = "aprovada", ignore=true) //ignorar mapeamento não presente no DTO
-    @Mapping(target = "integrada", ignore=true) //ignorar mapeamento não presente no DTO
+    @Mapping(target = "integrada", constant="true") //Definir mapeamento default true para campo "integrada"
     @Mapping(target = "observacao", ignore=true) //ignorar mapeamento não presente no DTO
     Proposta convertDtoToProposta(PropostaRequestDTO propostaRequestDTO);
 

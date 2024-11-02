@@ -8,7 +8,10 @@ import com.ctfera.java_spb.service.NotificacaoRabbitService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+
+import java.util.concurrent.TimeUnit;
 
 @Component
 public class PropostaSemIntegracao {
@@ -28,6 +31,9 @@ public class PropostaSemIntegracao {
         this.exchange = exchange;
     }
 
+    //Annotation para Bean de agendamento com parâmetros de fraquência de execução
+    //Annotation @EnableScheduling deve ser acrescentado ao método main
+    @Scheduled(fixedDelay = 10, timeUnit = TimeUnit.SECONDS)
     public void buscarPropostasSemIntegracao(){
         propostaRepository.findAllByIntegradaIsFalse().forEach(proposta -> {
            try{

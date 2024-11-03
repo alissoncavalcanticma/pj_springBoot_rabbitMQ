@@ -87,3 +87,13 @@ networks:
 #### Levantando env com docker compose:
 
 ``docker-compose -f rabbitMQ_env.yml -p rabbit_mq_env up -d``
+
+
+### Configurações AWS:
+
+ - Criar conta
+ - Acessar IAM
+   - Gerar accessKey e secretkey
+ - Acessar o SNS (Serviço de notificação)
+   - Configuração SMS
+     - Cadastrar número de telefone

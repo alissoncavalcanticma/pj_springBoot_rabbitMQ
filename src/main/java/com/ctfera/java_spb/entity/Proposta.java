@@ -1,5 +1,7 @@
 package com.ctfera.java_spb.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,6 +30,7 @@ public class Proposta {
 
     @OneToOne(cascade = CascadeType.PERSIST) //Relacionamento 1x1 com Usuario // (cascade = CascadeType.PERSIST) faz o usuário relacionado à proposta, caso não exista, ser salvo no banco antes da proposta
     @JoinColumn(name = "id_usuario") //Mapeando id_usuario como chave estrangeira de Usuario
+    @JsonManagedReference //Para evitar loop infinito de referencia, se usa essa Annotation. Define de que lado vai estar a gerencia do relacionamento (Proposta tem o id do usuário, e não o contrário).
     private Usuario usuario;
 
 

@@ -1,5 +1,6 @@
 package com.ctfera.java_spb.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -29,5 +30,6 @@ public class Usuario {
     private Double renda;
 
     @OneToOne(mappedBy = "usuario") //Relacionamento 1x1 com Proposta, mapeando usuario como nome do campo referente ao objeto Usuario em Proposta
-    private Proposta proposta;
+    @JsonBackReference  //Para evitar loop infinito de referencia. Essa Annotation define o lado fraco do relacionamento, lado referenciado. (O usuário é referenciado na proposta, e não o contrário).
+    private Proposta proposta; //Declaração de atributo como referência, o relacionamento é presente do lado forte, proposta.
 }

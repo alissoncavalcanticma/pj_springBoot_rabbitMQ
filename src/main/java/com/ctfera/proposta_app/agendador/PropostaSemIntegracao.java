@@ -1,10 +1,10 @@
-package com.ctfera.java_spb.agendador;
+package com.ctfera.proposta_app.agendador;
 
 //Classe para buscar no banco de dados as propostas sem integração e enviar novamente para a fila
 
-import com.ctfera.java_spb.entity.Proposta;
-import com.ctfera.java_spb.repository.PropostaRepository;
-import com.ctfera.java_spb.service.NotificacaoRabbitService;
+import com.ctfera.proposta_app.entity.Proposta;
+import com.ctfera.proposta_app.repository.PropostaRepository;
+import com.ctfera.proposta_app.service.NotificacaoRabbitService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;

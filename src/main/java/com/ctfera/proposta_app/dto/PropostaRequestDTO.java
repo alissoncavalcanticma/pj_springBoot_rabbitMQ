@@ -1,4 +1,4 @@
-package com.ctfera.java_spb.dto;
+package com.ctfera.proposta_app.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,10 +1,9 @@
-package com.ctfera.java_spb.controller;
+package com.ctfera.proposta_app.controller;
 
-import com.ctfera.java_spb.dto.PropostaRequestDTO;
-import com.ctfera.java_spb.dto.PropostaResponseDTO;
-import com.ctfera.java_spb.service.PropostaService;
+import com.ctfera.proposta_app.dto.PropostaRequestDTO;
+import com.ctfera.proposta_app.dto.PropostaResponseDTO;
+import com.ctfera.proposta_app.service.PropostaService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;

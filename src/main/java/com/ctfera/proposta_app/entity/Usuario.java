@@ -1,4 +1,4 @@
-package com.ctfera.java_spb.entity;
+package com.ctfera.proposta_app.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Entity;

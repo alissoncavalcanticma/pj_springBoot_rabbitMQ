@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ctfera</groupId>
-	<artifactId>java-spb</artifactId>
+	<artifactId>proposta_app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>java-spb</name>
+	<name>proposta_app</name>
 	<description>Microserviço para cadastro de propostas</description>
 	<url/>
 	<licenses>

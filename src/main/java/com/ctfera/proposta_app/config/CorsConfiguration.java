@@ -1,4 +1,4 @@
-package com.ctfera.java_spb.config;
+package com.ctfera.proposta_app.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

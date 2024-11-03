@@ -1,10 +1,10 @@
-package com.ctfera.java_spb;
+package com.ctfera.proposta_app;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class JavaSpbApplicationTests {
+class PropostaApplicationTests {
 
 	@Test
 	void contextLoads() {

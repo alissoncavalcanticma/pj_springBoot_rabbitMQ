@@ -1,10 +1,10 @@
-package com.ctfera.java_spb.service;
+package com.ctfera.proposta_app.service;
 
-import com.ctfera.java_spb.dto.PropostaRequestDTO;
-import com.ctfera.java_spb.dto.PropostaResponseDTO;
-import com.ctfera.java_spb.entity.Proposta;
-import com.ctfera.java_spb.mapper.PropostaMapper;
-import com.ctfera.java_spb.repository.PropostaRepository;
+import com.ctfera.proposta_app.dto.PropostaRequestDTO;
+import com.ctfera.proposta_app.dto.PropostaResponseDTO;
+import com.ctfera.proposta_app.entity.Proposta;
+import com.ctfera.proposta_app.mapper.PropostaMapper;
+import com.ctfera.proposta_app.repository.PropostaRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 

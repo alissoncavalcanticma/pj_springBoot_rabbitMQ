@@ -1,6 +1,6 @@
-package com.ctfera.java_spb.repository;
+package com.ctfera.proposta_app.repository;
 
-import com.ctfera.java_spb.entity.Proposta;
+import com.ctfera.proposta_app.entity.Proposta;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

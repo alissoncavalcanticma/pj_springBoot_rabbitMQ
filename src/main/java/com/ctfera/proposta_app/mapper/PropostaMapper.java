@@ -1,8 +1,8 @@
-package com.ctfera.java_spb.mapper;
+package com.ctfera.proposta_app.mapper;
 
-import com.ctfera.java_spb.dto.PropostaRequestDTO;
-import com.ctfera.java_spb.dto.PropostaResponseDTO;
-import com.ctfera.java_spb.entity.Proposta;
+import com.ctfera.proposta_app.dto.PropostaRequestDTO;
+import com.ctfera.proposta_app.dto.PropostaResponseDTO;
+import com.ctfera.proposta_app.entity.Proposta;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;

@@ -1,6 +1,5 @@
-package com.ctfera.java_spb.entity;
+package com.ctfera.proposta_app.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

@@ -20,7 +20,10 @@ public class RabbitMQConfiguration {
 
         //Instanciando Exchange e passado valor de property
         @Value("${spring.rabbitmq.propostapendente.exchange}")
-        private String exchange;
+        private String exchangePropostaPendente;
+
+        @Value("${spring.rabbitmq.propostaconcluida.exchange}")
+        private String exchangePropostaConcluida;
 
         //Criação das filas
         //Filas foram criadas nesse microserviço, mas deveriam ser criadas de acordo com a responsabilidade de cada microserviço.
@@ -83,8 +86,17 @@ public class RabbitMQConfiguration {
 
         @Bean
         public FanoutExchange criarFanoutExchangePropostaPendente(){
-            return ExchangeBuilder.fanoutExchange(exchange).build();
+            return ExchangeBuilder.fanoutExchange(exchangePropostaPendente).build();
         }
+
+        //Criando a Exchange "proposta-concluida"
+        //Setando @Bean para entrega do response do método à gerência do Spring.
+
+        @Bean
+        public FanoutExchange criarFanoutExchangePropostaConcluida(){
+            return ExchangeBuilder.fanoutExchange(exchangePropostaConcluida).build();
+        }
+
 
         //Setando o binds da Exchange "proposta-pendente"
         //Método seta Queues da Exchange específica
@@ -102,6 +114,22 @@ public class RabbitMQConfiguration {
                     .to(criarFanoutExchangePropostaPendente());
         }
 
+
+        //Setando o binds da Exchange "proposta-concluida"
+        //Método seta Queues da Exchange específica
+        //"PropostaConcluidaMsPropostaMsProposta"
+        @Bean
+        public Binding criarBindingPropostaConcluidaMSPropostaApp(){
+            return BindingBuilder.bind(criarFilaPropostaConcluidaMsProposta())
+                    .to(criarFanoutExchangePropostaConcluida());
+        }
+
+        //"PropostaConcluidaMsNotificacao"
+        @Bean
+        public Binding criarBindingPropostaConcluidaMSNotificacao(){
+            return BindingBuilder.bind(criarFilaPropostaConcluidaMsNotificacao())
+                    .to(criarFanoutExchangePropostaConcluida());
+        }
 
 
 
